@@ -2,6 +2,7 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :gossips do 
     resources :comments
+    resources :likes, only: [:new, :create, :destroy]
   end
   resources :users
   resources :cities

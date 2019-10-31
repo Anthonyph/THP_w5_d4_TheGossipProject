@@ -7,10 +7,14 @@
   <p>Date de parution : <%=@detail.date%><p>
   <p>Ville de l'auteur: <%=@detail.user.city.name%>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "voir le détail de la ville", city_path(@detail.user.city.id)%><p><br/>
 
-  <% if current_user.id == @detail.user.id %>
-  <b><%= link_to "Mettre à jour le gossip", edit_gossip_path(@detail.id) %></b><br/>
+  <% if current_user != nil %>
+  <b><%= link_to "Mettre à jour le gossip", edit_gossip_path(@detail.id) %></b>
+  <%= form_tag gossip_likes_path(gossip_id: params['id'],action:"create") do %>
+  <%= submit_tag "like moi !" %>
+  <% end %>
+
   <%= form_tag url_for(action: 'destroy'),method: "delete" do %>
-  <%= submit_tag "Supprimer" %>
+  <%= submit_tag "Supprimer" %>  
   <% end %>
   <% end %>
   <br/>
