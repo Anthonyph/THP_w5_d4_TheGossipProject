@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-  
-  
-   
-  
-  
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :gossips  
-  resources :comments
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :gossips do 
+    resources :comments
+  end
   resources :users
   resources :cities
   get '/welcome/:first_name/', to: "welcome#name"

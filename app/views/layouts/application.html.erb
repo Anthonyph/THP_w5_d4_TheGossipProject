@@ -20,15 +20,30 @@
       <li class="nav-item">
         <a class="nav-link" href="http://localhost:3000/contact">Contact</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="http://localhost:3000/users/new">S'inscrire</a>
+
+      <% if current_user == nil %>
+      <div class="dropdown show">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign up/in
+      </a>
+        
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="http://localhost:3000/users/new">S'inscrire</a>
+          <a class="dropdown-item" href="http://localhost:3000/sessions/new">S'identifier</a>
+        </div>
+        <%end%>
+        </ul>
+        </div>
+      <ul style="list-style: none;">
+    <% if current_user != nil %>
+      <li class="nav-item">      
+      <%= form_tag session_path(session.id), method: :delete do %>
+      <input type="submit" class="btn btn-secondary" value="Deconnexion"/>
+      <%end%>
+      <%end%>
       </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+     </ul>
+    </div>
 </nav>
 
 

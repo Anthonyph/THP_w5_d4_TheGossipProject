@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new,:show]
   def index
     @array= Gossip.showall
     
@@ -19,7 +20,7 @@ class GossipsController < ApplicationController
   
 
   def create
-    user=User.find(1)
+    user=User.find_by(id:session[:user_id])
     @gossip = Gossip.new( user_id: user.id,
                           'title' => params[:title],
                           'date' => params[:date],
@@ -54,7 +55,14 @@ class GossipsController < ApplicationController
     redirect_to gossips_path
   end
 
+  private
 
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
   
- 
+
 end

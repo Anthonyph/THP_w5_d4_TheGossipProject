@@ -1,0 +1,12 @@
+      <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/users/new">S'inscrire</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="http://localhost:3000/sessions/new">S'identifier</a>
+      </li>
+      </ul>
+
+
+          <%= form_tag new_gossip_comment_path(session  )({controller: "comments", action:"create"},method:"post") do %>
+
+          gossip_id: params['id'],

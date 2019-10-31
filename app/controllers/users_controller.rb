@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     city=City.find(1)
     @user = User.new( city_id: city.id, 
                       'email': params[:email],
-                      'password': params[:password])
+                      'password': params[:password],
+                      'name':params[:name])
     if @user.save # essaie de sauvegarder en base @gossip
 
          

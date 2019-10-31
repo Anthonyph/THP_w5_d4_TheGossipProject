@@ -1,5 +1,5 @@
 <html>
-
+<h1>Bienvenue à la page de d'inscription de The Gossip Project</h1>
 <center>
 </br>
 <%= form_tag url_for(action: 'create'), method: "post" do %>
@@ -9,6 +9,9 @@
 
 <%= label_tag 'Password :' %><br> 
 <%= text_area_tag 'password'%><br><br>
+
+<%= label_tag 'Ton Nom :' %><br> 
+<%= text_area_tag 'name'%><br><br>
 
 <%= submit_tag "Valider" %>
 <% end %>

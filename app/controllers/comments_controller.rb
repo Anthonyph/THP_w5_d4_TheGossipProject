@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user, only: [:new]
   def edit
   end
 
@@ -10,14 +11,14 @@ class CommentsController < ApplicationController
   end
 
   def new 
-    @useranonymous = User.find(1) 
-    
+    @useranonymous = User.find(1)
+
 	end
 
   def create
-    user=User.find(1)
+    user= current_user
     
-    @gossip = Gossip.find(params['id']) 
+    @gossip = Gossip.find(params[:gossip_id]) 
     
       
     @comment = Comment.new(user_id: user.id, gossip_id: @gossip.id,'content' => params[:content]) 
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
         
       redirect_to gossips_path # si ça marche, il redirige vers la page d'index du site
     else
-      render comment_path  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
+      render new_gossip_comment_path  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
     end 
   end
 end
