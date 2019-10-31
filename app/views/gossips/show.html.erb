@@ -12,13 +12,16 @@
       <%= submit_tag "Supprimer" %> 
     <% end %>
   <% end %>
-  <% if (current_user != nil) && (current_user.likes == nil)%>
-    <%= form_tag gossip_likes_path(gossip_id: params['id'],action:"create") do %>
-      <%= submit_tag "like moi !" %>
-    <% end %> 
-  <% else %> 
+  <% puts Like.where(gossip_id: @detail.id, user_id: current_user.id).exists?%> 
+   <% puts (current_user != nil)%> 
+   <% puts (current_user.likes == nil)%>
+  <% if (current_user != nil) && Like.where(gossip_id: @detail.id, user_id: current_user.id).exists?%>
     <%= form_tag gossip_like_path(gossip_id: params['id'],action:'destroy'),method: "delete" do %>
       <%= submit_tag "Tu n'aime plus?" %>
+    <% end %> 
+  <% elsif (current_user != nil)%> 
+    <%= form_tag gossip_likes_path(gossip_id: params['id'],action:"create") do %>
+      <%= submit_tag "like moi !" %>
     <% end %> 
   <% end %>
   <%=@nblikes%>&nbsp;Like<p>
