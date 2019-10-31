@@ -8,7 +8,9 @@ class GossipsController < ApplicationController
   def show
     @detail = Gossip.find(params['id']) 
     @com = Comment.where(params['id'])
-    @array_coms = Comment.showall    
+    @array_coms = Comment.showall
+    @nblikes= Like.select(:id).where(:gossip_id == @detail.id ).count 
+      
 
   end
 

@@ -22,6 +22,9 @@ class LikesController < ApplicationController
 
 
   def destroy
+    @detail = Like.find(params[:like_id])
+    @detail.destroy 
+    redirect_to gossips_path
 
   end
 end
