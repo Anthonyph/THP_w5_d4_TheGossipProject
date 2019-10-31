@@ -14,17 +14,17 @@ class LikesController < ApplicationController
     if @like.save # essaie de sauvegarder en base @gossip
 
         
-      redirect_to gossips_path # si ça marche, il redirige vers la page d'index du site
+      redirect_to gossip_path(@gossip.id) # si ça marche, il redirige vers la page d'index du site
     else
-      redirect_to gossip_path  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
+      redirect_to gossip_path(@gossip.id)  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
     end 
   end
 
 
   def destroy
+    @gossip = Gossip.find(params[:gossip_id]) 
     @like = Like.find_by(gossip_id: params[:gossip_id], user_id: current_user.id).destroy
 
-    redirect_to gossips_path
-
+    redirect_to gossip_path(@gossip.id)
   end
 end
