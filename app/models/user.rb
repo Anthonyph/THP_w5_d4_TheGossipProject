@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	
+	has_secure_password
 	has_many :gossips
 	has_many :comments
 	belongs_to :city
@@ -8,12 +8,10 @@ class User < ApplicationRecord
   	presence: true,
   	uniqueness: true,
 		format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" }
-	validates :name,
-		presence: true
-	validates :description,
-		presence: true
-	validates :birthdate,
-		presence: true
+
+	validates :password,
+		presence: true,	
+		length:{ minimum: 6}
 
 	def self.showall
 		user_array = User.all					
