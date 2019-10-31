@@ -1,0 +1,35 @@
+
+
+<div class="jumbotron jumbotron-fluid" style="height=10px">
+  <div class="container" >
+    <center><h1 class="display-4"> "The Gossip Project"</h1></center>
+    <center><p class="lead">Voila le super site de gossip, régale toi ! </p></center>
+    <center><h5><%= link_to "Creer un nouveau gossip", new_gossip_path %></h5></center>
+  </div>
+</div>
+
+<% if @gossip %>
+<div class="alert alert-dismissible alert-success">
+<button type="button" class="close" data-dismiss="alert">&times;</button>
+<strong> BRAVO ! </strong>
+    <p>Votre gossip à bien été envoyé, vous pouvez déjà aller le regarder  !</p>
+</div>
+<% end %>
+
+<center><div class="card-deck"></center>
+<%@array.each do |liste|%>
+
+  <center><div class="card" style="width: 50rem;">
+  <h5 class="card-header"><%=liste.user.name%></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%=liste.title%></h5>
+    
+    <%= link_to "voir le gossip", gossip_path(liste.id) %>
+  </div>
+</div><center>
+
+</br>
+</br>
+<% end %>
+</div></center>
+#lien rails avec Link_to et path, l'argument correspondant à l'entrée de l'array gossips qu'on veut afficher

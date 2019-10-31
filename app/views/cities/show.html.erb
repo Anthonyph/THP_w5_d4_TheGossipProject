@@ -1,0 +1,23 @@
+<center><h1><%=@ville.name%></h1></center>
+
+<center><p>Code Postal : <%=@ville.zipcode%><p></center>
+
+<%@array.each do |liste|%>
+  <%if liste.user.city_id == @ville.id%>
+
+    <center><div class="card" style="width: 50rem;">
+    <h5 class="card-header"><%=liste.user.name%></h5>
+    <div class="card-body">
+    <h5 class="card-title"><%=liste.content%></h5>
+      
+    <%= link_to "voir le gossip", gossip_path(liste.id) %>
+    </div>
+    </div></center>
+    </br>
+    </br>
+  <%end%>
+<% end %>
+
+
+
+

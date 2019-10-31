@@ -1,0 +1,9 @@
+<h1>Profil de l'auteur: </h1>
+
+
+  <p>Auteur : <%=@profil.name%><p>
+  <p>Email: : <%=@profil.email%><p>
+  <p>Description : <%=@profil.description%><p>
+  <p>Date de naissance : <%=@profil.birthdate%><p>
+  <p>Ville: : <%=@profil.city.name%><p>
+  <%= link_to "voir la ville de l'auteur", city_path(@profil.city.id) %>

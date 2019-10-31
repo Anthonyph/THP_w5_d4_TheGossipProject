@@ -1,0 +1,19 @@
+<center><h1>Salut <%=@name%> !!</h1></center>
+
+
+  
+<center><h2>Les gossips :</h2></br></center>
+<%@array.each do |liste|%>
+  
+  <center><div class="card" style="width: 50rem;">
+  <h5 class="card-header"><%=liste.user.name%></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%=liste.title%></h5>
+    
+    <%= link_to "voir le gossip", gossip_path(liste.id) %>
+  </div>
+</div></center>
+</br>
+</br>
+<% end %>
+#lien rails avec Link_to et path, l'argument correspondant à l'entrée de l'array gossips qu'on veut afficher
