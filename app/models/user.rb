@@ -21,13 +21,13 @@ class User < ApplicationRecord
 	end
 	#Permet d'afficher tout les users sous forme d'array
 
-	def self.find(id)
+#	def self.find(id)
 		
-    user_array = self.showall
-    index=id.to_i - 1 
-    user_id = user_array[index]
+ #   user_array = self.showall
+ #   index=id.to_i - 1 
+ #   user_id = user_array[index]
     
-		return user_id 
-	end
+#		return user_id 
+#	end
 	#Permet de trouver un user dans l'array en utilisant son id.
 end
