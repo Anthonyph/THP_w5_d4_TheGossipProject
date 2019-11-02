@@ -16,7 +16,7 @@ class UsersController < ApplicationController
          
       redirect_to gossips_path # si ça marche, il redirige vers la page d'index du site
     else
-      render :new  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
+      render new_user_path  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
     end 
                           
   end
