@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
-  def name
+  def show
     
-    @name= params["first_name"]
+    @name= params[:id]
 
     @array= Gossip.showall
     

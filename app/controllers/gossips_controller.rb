@@ -31,7 +31,7 @@ class GossipsController < ApplicationController
     if @gossip.save # essaie de sauvegarder en base @gossip
 
       @array= Gossip.showall   
-      render "index.html.erb" # si ça marche, il redirige vers la page d'index du site
+      render gossips_path # si ça marche, il redirige vers la page d'index du site
     else
       render new_gossip_path  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
     end 
