@@ -15,7 +15,7 @@ class GossipsController < ApplicationController
   end
 
   def new 
-    @useranonymous = User.find(1) 
+    
     @gossip = Gossip.new
      
 	end
@@ -30,8 +30,8 @@ class GossipsController < ApplicationController
 
     if @gossip.save # essaie de sauvegarder en base @gossip
 
-      @array= Gossip.showall   
-      render gossips_path # si ça marche, il redirige vers la page d'index du site
+       
+      redirect_to gossips_path # si ça marche, il redirige vers la page d'index du site
     else
       render new_gossip_path  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
     end 

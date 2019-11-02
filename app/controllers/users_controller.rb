@@ -6,8 +6,8 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
-    city=City.find(1)
-    @user = User.new( city_id: city.id, 
+    
+    @user = User.new( city_id: City.first.id, 
                       'email': params[:email],
                       'password': params[:password],
                       'name':params[:name])

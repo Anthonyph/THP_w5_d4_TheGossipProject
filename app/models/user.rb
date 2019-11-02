@@ -20,13 +20,9 @@ class User < ApplicationRecord
 	end
 	#Permet d'afficher tout les users sous forme d'array
 
-#	def self.find(id)
-		
- #   user_array = self.showall
- #   index=id.to_i - 1 
- #   user_id = user_array[index]
-    
-#		return user_id 
-#	end
-	#Permet de trouver un user dans l'array en utilisant son id.
+	def remember(remember_token)
+    remember_digest = BCrypt::Password.create(remember_token)
+    self.update(remember_digest: remember_digest)
+	end
+	
 end
