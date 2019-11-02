@@ -25,7 +25,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout(user)
+    user = current_user
+    log_out(user)
     redirect_to gossips_path
   end
 
